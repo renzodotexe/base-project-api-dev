@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Index
 from database import Base
 
 class BlogPost(Base):
@@ -8,3 +8,5 @@ class BlogPost(Base):
     author = Column(String)
     title = Column(String)
     content = Column(String)
+
+    Index('unique_author_title_content', author, title, content, unique=True)

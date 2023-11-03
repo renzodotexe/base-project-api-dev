@@ -9,6 +9,13 @@ def get_blogposts(db: Session, skip: int = 0, limit: int = 100):
 def get_blogpost_by_id(db: Session, id: int):
     return db.query(models.BlogPost).filter(models.BlogPost.id == id).first()
 
+def get_existing_blog_post(db: Session, author: str, title: str, content: str):
+    return db.query(models.BlogPost).filter(
+        models.BlogPost.author == author,
+        models.BlogPost.title == title,
+        models.BlogPost.content == content
+    ).first()
+
 def create_blog_post(db: Session, blogpost: schemas.BlogPost):
     db_post = models.BlogPost(**blogpost.model_dump())
     db.add(db_post)
