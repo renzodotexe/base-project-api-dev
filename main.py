@@ -37,7 +37,7 @@ def get_all_blog_posts(skip: int = 0, limit: int = 10, db: Session = Depends(get
 def get_blog_post_by_id(post_id: int, db: Session = Depends(get_db)):
     blog_post = crud.get_blogpost_by_id(db, post_id)
     if blog_post is None:
-        raise HTTPException(status_code=404, detail="Requested blogpost ID not found.")
+        raise HTTPException(status_code=404, detail="Requested blogpost ID does not exist.")
     return blog_post
 
 # POST-endpoint om een nieuwe blogpost aan te maken
@@ -54,10 +54,10 @@ def create_new_blog_post(blogpost: schemas.BlogPostCreate, db: Session = Depends
 def update_blog_post_by_id(post_id: int, blogpost: schemas.BlogPostUpdate, db: Session = Depends(get_db)):
     updated_post = crud.update_blog_post(db, post_id, blogpost)
     if updated_post is None:
-        raise HTTPException(status_code=404, detail="Requested blogpost ID not found.")
+        raise HTTPException(status_code=404, detail="Requested blogpost ID does not exist.")
     return updated_post
 
-# Endpoint om de hele database te wissen (alleen voor ontwikkelaars)
+# POST-endpoint om de hele database te wissen (alleen voor ontwikkelaars)
 @app.post("/clear-database/")
 async def clear_whole_database(api_key: str = Query(..., title="API Key")):
     if api_key != DEVELOPER_API_KEY:
@@ -67,3 +67,13 @@ async def clear_whole_database(api_key: str = Query(..., title="API Key")):
     db = SessionLocal()
     crud.clear_database(db)
     return {"message": "Database wiped! This cannot be undone."}
+
+# DELETE-endpoint om een specifieke post op id te verwijderen
+@app.delete('/posts/{post_id}', response_model=None)
+def delete_blog_post(post_id: int, db: Session = Depends(get_db)):
+    post = crud.get_blogpost_by_id(db, post_id)
+    if post is None:
+        raise HTTPException(status_code=404, detail="Requested blogpost ID does not exist.")
+
+    crud.delete_blog_post(db, post)
+    return {"message": "Post deleted! This cannot be undone."}
