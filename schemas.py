@@ -5,6 +5,10 @@ class BlogPostBase(BaseModel):
     title: str
     content: str
 
+class BlogPostUpdate(BlogPostBase):
+    title: str | None = None
+    content: str | None = None
+
 class BlogPostCreate(BlogPostBase):
     pass
 

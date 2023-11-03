@@ -15,3 +15,12 @@ def create_blog_post(db: Session, blogpost: schemas.BlogPost):
     db.commit()
     db.refresh(db_post)
     return db_post
+
+def update_blog_post(db: Session, id: int, blogpost: schemas.BlogPostUpdate):
+    db_post = db.query(models.BlogPost).filter(models.BlogPost.id == id).first()
+    if db_post:
+        for field, value in blogpost.model_dump(exclude_unset=True).items():
+            setattr(db_post, field, value)
+        db.commit()
+        db.refresh(db_post)
+    return db_post
