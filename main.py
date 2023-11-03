@@ -1,23 +1,24 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
-from typing import List
+from fastapi import Depends, FastAPI, HTTPException
+from sqlalchemy.orm import Session
+
+import crud
+import models
+import schemas
+from database import SessionLocal, engine
+import os
+
+if not os.path.exists('.\sqlitedb'):
+    os.makedirs('.\sqlitedb')
+
+#"sqlite:///./sqlitedb/sqlitedata.db"
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-# Simuleer enkele blogberichten
-blog_posts = [
-    {"id": 1, "title": "Mijn eerste blogpost", "content": "Dit is de inhoud van mijn eerste blogpost."},
-    {"id": 2, "title": "Een andere blogpost", "content": "Dit is een tweede blogpost."},
-    {"id": 3, "title": "Nog een blogpost", "author": "Renzo Lemmens", "content": "Dit is de derde blogpost."},
-]
-
-class BlogPost(BaseModel):
-    id: int
-    author: str | None = None
-    title: str
-    content: str
-
-@app.get('/posts', response_model=List[BlogPost])
-def get_posts():
-    return blog_posts
-
+# Dependency
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
