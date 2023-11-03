@@ -1,4 +1,4 @@
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import Depends, FastAPI, HTTPException, Query
 from sqlalchemy.orm import Session
 
 import crud
@@ -14,6 +14,9 @@ if not os.path.exists('.\sqlitedb'):
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
+# Dit is een geheime sleutel of token voor ontwikkelaars
+DEVELOPER_API_KEY = "Munano123!"
 
 # Dependency
 def get_db():
@@ -53,3 +56,14 @@ def update_blog_post_by_id(post_id: int, blogpost: schemas.BlogPostUpdate, db: S
     if updated_post is None:
         raise HTTPException(status_code=404, detail="Requested blogpost ID not found.")
     return updated_post
+
+# Endpoint om de hele database te wissen (alleen voor ontwikkelaars)
+@app.post("/clear-database/")
+async def clear_whole_database(api_key: str = Query(..., title="API Key")):
+    if api_key != DEVELOPER_API_KEY:
+        raise HTTPException(status_code=401, detail="Unauthorized Access!")
+
+    # Wis de database
+    db = SessionLocal()
+    crud.clear_database(db)
+    return {"message": "Database wiped! This cannot be undone."}

@@ -31,3 +31,8 @@ def update_blog_post(db: Session, id: int, blogpost: schemas.BlogPostUpdate):
         db.commit()
         db.refresh(db_post)
     return db_post
+
+def clear_database(db: Session):
+    # Gebruik de query.delete() methode om alle rijen uit de gewenste tabel te verwijderen
+    db.query(models.BlogPost).delete()
+    db.commit()
