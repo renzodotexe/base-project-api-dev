@@ -1,7 +1,6 @@
 from pydantic import BaseModel
 
 class BlogPostBase(BaseModel):
-    id: int
     author: str | None = None
     title: str
     content: str
