@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Index
+from sqlalchemy import Column, Integer, String, Index
 from database import Base
 
 class BlogPost(Base):
