@@ -5,4 +5,3 @@ uvicorn[standard]
 crud
 models
 schemas
-os
