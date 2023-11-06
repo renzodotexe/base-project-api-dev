@@ -1,4 +1,4 @@
-# FastAPI Blog API / Basisproject
+# FastAPI Blog API (Basisproject)
 
 ## Beschrijving
 
