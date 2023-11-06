@@ -1,4 +1,5 @@
 from fastapi import Depends, FastAPI, HTTPException, Query
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from sqlalchemy.orm import Session
 
 import crud
@@ -14,9 +15,7 @@ if not os.path.exists('../sqlitedb'):
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-
-# Dit is een geheime sleutel of token voor ontwikkelaars
-DEVELOPER_API_KEY = "Munano123!"
+security = HTTPBasic()
 
 # Dependency
 def get_db():
@@ -59,10 +58,7 @@ def update_blog_post_by_id(post_id: int, blogpost: schemas.BlogPostUpdate, db: S
 
 # POST-endpoint om de hele database te wissen (alleen voor ontwikkelaars)
 @app.post("/clear-database/")
-async def clear_whole_database(api_key: str = Query(..., title="API Key")):
-    if api_key != DEVELOPER_API_KEY:
-        raise HTTPException(status_code=401, detail="Unauthorized Access!")
-
+async def clear_whole_database(credentials: HTTPBasicCredentials = Depends(security)):
     # Wis de database
     db = SessionLocal()
     crud.clear_database(db)
