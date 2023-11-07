@@ -74,7 +74,7 @@ async def clear_whole_database(credentials: HTTPBasicCredentials = Depends(secur
     if not (is_correct_username and is_correct_password):
         raise HTTPException(
             status_code=401,
-            detail="Incorrect email or password",
+            detail="Incorrect username and/or password",
             headers={"WWW-Authenticate": "Basic"},
         )
 
