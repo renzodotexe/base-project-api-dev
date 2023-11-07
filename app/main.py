@@ -1,4 +1,4 @@
-from fastapi import Depends, FastAPI, HTTPException, Query
+from fastapi import Depends, FastAPI, HTTPException
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from sqlalchemy.orm import Session
 
@@ -26,41 +26,7 @@ def get_db():
     finally:
         db.close()
 
-# GET-endpoint om alle blogposts op te halen
-@app.get('/posts/', response_model=list[schemas.BlogPost])
-def get_all_blog_posts(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
-    blog_posts = crud.get_blogposts(db, skip=skip, limit=limit)
-    return blog_posts
-
-# GET-endpoint om een specifieke blogpost op te halen op basis van ID
-@app.get('/posts/{post_id}', response_model=schemas.BlogPost)
-def get_blog_post_by_id(post_id: int, db: Session = Depends(get_db)):
-    blog_post = crud.get_blogpost_by_id(db, post_id)
-    if blog_post is None:
-        raise HTTPException(status_code=404, detail="Requested blogpost ID does not exist.")
-    return blog_post
-
-# POST-endpoint om een nieuwe blogpost aan te maken
-@app.post('/posts/', response_model=schemas.BlogPost)
-def create_new_blog_post(blogpost: schemas.BlogPostCreate, db: Session = Depends(get_db)):
-    # Controleer of een identieke post al bestaat
-    existing_post = crud.get_existing_blog_post(db, blogpost.author, blogpost.title, blogpost.content)
-    if existing_post:
-        raise HTTPException(status_code=400, detail="A blogpost with the same values already exists.")
-    return crud.create_blog_post(db, blogpost)
-
-# PUT-endpoint om een bestaande blogpost aan te passen
-@app.put('/posts/{post_id}', response_model=schemas.BlogPost)
-def update_blog_post_by_id(post_id: int, blogpost: schemas.BlogPostUpdate, db: Session = Depends(get_db)):
-    updated_post = crud.update_blog_post(db, post_id, blogpost)
-    if updated_post is None:
-        raise HTTPException(status_code=404, detail="Requested blogpost ID does not exist.")
-    return updated_post
-
-# POST-endpoint om de hele database te wissen (alleen voor ontwikkelaars)
-@app.post("/clear-database/")
-async def clear_whole_database(credentials: HTTPBasicCredentials = Depends(security)):
-    # Wis de database
+def check_auth(credentials: HTTPBasicCredentials = Depends(security)):
     current_username_bytes = credentials.username.encode("utf8")
     correct_username_bytes = b"developer"
     is_correct_username = secrets.compare_digest(
@@ -78,6 +44,44 @@ async def clear_whole_database(credentials: HTTPBasicCredentials = Depends(secur
             headers={"WWW-Authenticate": "Basic"},
         )
 
+# GET-endpoint om alle blogposts op te halen
+@app.get('/posts/', response_model=list[schemas.BlogPost])
+def get_all_blog_posts(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
+    blog_posts = crud.get_blogposts(db, skip=skip, limit=limit)
+    return blog_posts
+
+# GET-endpoint om een specifieke blogpost op te halen op basis van ID
+@app.get('/posts/{post_id}', response_model=schemas.BlogPost)
+def get_blog_post_by_id(post_id: int, db: Session = Depends(get_db)):
+    blog_post = crud.get_blogpost_by_id(db, post_id)
+    if blog_post is None:
+        raise HTTPException(status_code=404, detail="Requested blogpost ID does not exist.")
+    return blog_post
+
+# POST-endpoint om een nieuwe blogpost aan te maken
+@app.post('/posts/', response_model=schemas.BlogPost)
+def create_new_blog_post(blogpost: schemas.BlogPostCreate, db: Session = Depends(get_db), credentials: HTTPBasicCredentials = Depends(security)):
+    check_auth(credentials)
+    # Controleer of een identieke post al bestaat
+    existing_post = crud.get_existing_blog_post(db, blogpost.author, blogpost.title, blogpost.content)
+    if existing_post:
+        raise HTTPException(status_code=400, detail="A blogpost with the same values already exists.")
+    return crud.create_blog_post(db, blogpost)
+
+# PUT-endpoint om een bestaande blogpost aan te passen
+@app.put('/posts/{post_id}', response_model=schemas.BlogPost)
+def update_blog_post_by_id(post_id: int, blogpost: schemas.BlogPostUpdate, db: Session = Depends(get_db), credentials: HTTPBasicCredentials = Depends(security)):
+    check_auth(credentials)
+    updated_post = crud.update_blog_post(db, post_id, blogpost)
+    if updated_post is None:
+        raise HTTPException(status_code=404, detail="Requested blogpost ID does not exist.")
+    return updated_post
+
+# POST-endpoint om de hele database te wissen (alleen voor ontwikkelaars)
+@app.post("/clear-database/")
+async def clear_whole_database(credentials: HTTPBasicCredentials = Depends(security)):
+    check_auth(credentials)
+    # Wis de database
     db = SessionLocal()
     crud.clear_database(db)
     return {"message": "Database wiped! This cannot be undone."}

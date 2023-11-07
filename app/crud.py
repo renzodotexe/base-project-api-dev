@@ -16,7 +16,7 @@ def get_existing_blog_post(db: Session, author: str, title: str, content: str):
         models.BlogPost.content == content
     ).first()
 
-def create_blog_post(db: Session, blogpost: schemas.BlogPost):
+def create_blog_post(db: Session, blogpost: schemas.BlogPostCreate):
     db_post = models.BlogPost(**blogpost.model_dump())
     db.add(db_post)
     db.commit()
