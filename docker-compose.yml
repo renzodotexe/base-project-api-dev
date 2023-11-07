@@ -1,11 +1,11 @@
 version: "3.9"
 services:
- base-project-api-dev:
+ blogpost-api:
   image: renzodotexe/base-project-api-dev
   ports:
     - "8000:8000"
   volumes:
-    - sqlite_useritems_volume:/code/sqlitedb
+    - sqlite_blog_volume:/code/sqlitedb
 
 volumes:
-  sqlite_useritems_volume:
+  sqlite_blog_volume:
