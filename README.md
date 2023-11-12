@@ -2,9 +2,9 @@
 
 ## Beschrijving
 
-Dit basisproject implementeert een RESTful API voor **het beheren van blogposts** met behulp van FastAPI.
+Dit basisproject implementeert een RESTful API voor het beheren van blogposts met behulp van FastAPI.
 
-## Hosted API
+## Gehoste API
 
 Deze API is gehost op Okteto Cloud. Je kunt de API-documentatie en voorbeelden vinden op de volgende locatie:
 
@@ -12,42 +12,60 @@ Deze API is gehost op Okteto Cloud. Je kunt de API-documentatie en voorbeelden v
 
 ## Aantoonbare Werking
 
-Hieronder kan je screenshots vinden die elk endpoint van de API demonstreren.
+Hieronder vind je screenshots die de werking van elk API-endpoint demonstreren.
 
 ### Weergeven Alle Blogposts
 
-- ![All Blogposts](screenshots/get-all-blogposts-1.png)
+- **Alle Blogposts**
+  ![Alle Blogposts](screenshots/get-all-blogposts-1.png)
 
 ### Aanmaken Blogpost
 
-- ![Authorization](screenshots/create-blogpost-1.png)
-- ![Request Body](screenshots/create-blogpost-2.png)
-- ![Error On Duplicate](screenshots/create-blogpost-3.png)
+- **Autorisatie**
+  ![Autorisatie](screenshots/create-blogpost-1.png)
+- **Request Body**
+  ![Verzoekbody](screenshots/create-blogpost-2.png)
+- **Fout bij duplicaat**
+  ![Fout bij duplicaat](screenshots/create-blogpost-3.png)
 
 ### Ophalen Specifieke Blogpost
 
-- ![Valid ID](screenshots/get-specific-blogpost-by-id-1.png)
-- ![Non-valid ID](screenshots/get-specific-blogpost-by-id-2.png)
+- **Geldige ID**
+  ![Geldige ID](screenshots/get-specific-blogpost-by-id-1.png)
+- **Ongeldige ID**
+  ![Ongeldige ID](screenshots/get-specific-blogpost-by-id-2.png)
 
 ### Updaten Blogpost
 
-- ![Changed Values](screenshots/update-specific-blogpost-by-id-1.png)
-- ![Proof That ID Cannot Be Changed](screenshots/update-specific-blogpost-by-id-2.png)
+- **Gewijzigde Waarden**
+  ![Gewijzigde Waarden](screenshots/update-specific-blogpost-by-id-1.png)
+- **Bewijs dat ID niet kan worden gewijzigd**
+  ![Bewijs dat ID niet kan worden gewijzigd](screenshots/update-specific-blogpost-by-id-2.png)
 
 ### Leegmaken Database
 
-- ![Success](screenshots/clear-database-1.png)
-- ![Not Authorized](screenshots/clear-database-2.png)
-- ![Proof](screenshots/clear-database-3.png)
+- **Succes**
+  ![Succes](screenshots/clear-database-1.png)
+- **Niet Geautoriseerd**
+  ![Niet Geautoriseerd](screenshots/clear-database-2.png)
+- **Bewijs**
+  ![Bewijs](screenshots/clear-database-3.png)
 
-## Volledige OpenAPI Docs
+## Volledige OpenAPI Documentatie
 
 Screenshots van de volledige OpenAPI-docs pagina:
 
-![Overzicht](screenshots/openapi-docs-1.png)
-![GET - All Blogposts](screenshots/openapi-docs-2.png)
-![POST - New Blogpost](screenshots/openapi-docs-3.png)
-![GET - Search Blogpost By ID](screenshots/openapi-docs-4.png)
-![PUT - Update Blogpost By ID](screenshots/openapi-docs-5.png)
-![DELETE - Remove Blogpost By ID](screenshots/openapi-docs-6.png)
-![POST - Clear Whole Database](screenshots/openapi-docs-7.png)
+- **Overzicht**
+  ![Overzicht](screenshots/openapi-docs-1.png)
+- **GET - Alle Blogposts**
+  ![GET - Alle Blogposts](screenshots/openapi-docs-2.png)
+- **POST - Nieuwe Blogpost**
+  ![POST - Nieuwe Blogpost](screenshots/openapi-docs-3.png)
+- **GET - Zoeken Blogpost Op ID**
+  ![GET - Zoeken Blogpost Op ID](screenshots/openapi-docs-4.png)
+- **PUT - Bijwerken Blogpost Op ID**
+  ![PUT - Bijwerken Blogpost Op ID](screenshots/openapi-docs-5.png)
+- **DELETE - Verwijderen Blogpost Op ID**
+  ![DELETE - Verwijderen Blogpost Op ID](screenshots/openapi-docs-6.png)
+- **POST - Volledige Database Legen**
+  ![POST - Volledige Database Legen](screenshots/openapi-docs-7.png)
