@@ -88,7 +88,8 @@ async def clear_whole_database(credentials: HTTPBasicCredentials = Depends(secur
 
 # DELETE-endpoint om een specifieke post op id te verwijderen
 @app.delete('/posts/{post_id}', response_model=None)
-def delete_blog_post(post_id: int, db: Session = Depends(get_db)):
+def delete_blog_post(post_id: int, db: Session = Depends(get_db), credentials: HTTPBasicCredentials = Depends(security)):
+    check_auth(credentials)
     post = crud.get_blogpost_by_id(db, post_id)
     if post is None:
         raise HTTPException(status_code=404, detail="Requested blogpost ID does not exist.")
