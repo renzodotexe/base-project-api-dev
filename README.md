@@ -36,8 +36,9 @@ Hieronder kan je screenshots vinden die elk endpoint van de API demonstreren.
 
 ### Leegmaken Database
 
-- ![Screenshot 1](URL_NAAR_SCREENSHOT_1)
-- ![Screenshot 2](URL_NAAR_SCREENSHOT_2)
+- ![Success](screenshots/clear-database-1.png)
+- ![Not Authorized](screenshots/clear-database-2.png)
+- ![Proof](screenshots/clear-database-3.png)
 
 ## Volledige OpenAPI Docs
 
