@@ -16,7 +16,7 @@ Hieronder kan je screenshots vinden die elk endpoint van de API demonstreren.
 
 ### Weergeven Alle Blogposts
 
-- ![Screenshot 1](screenshots/get-all-blogposts-1.png)
+- ![All Blogposts](screenshots/get-all-blogposts-1.png)
 
 ### Aanmaken Blogpost
 
@@ -26,8 +26,8 @@ Hieronder kan je screenshots vinden die elk endpoint van de API demonstreren.
 
 ### Ophalen Specifieke Blogpost
 
-- ![Screenshot 1](URL_NAAR_SCREENSHOT_1)
-- ![Screenshot 2](URL_NAAR_SCREENSHOT_2)
+- ![Valid ID](screenshots/get-specific-blogpost-by-id-1.png)
+- ![Non-valid ID](screenshots/get-specific-blogpost-by-id-2.png)
 
 ### Updaten Blogpost
 
