@@ -20,8 +20,9 @@ Hieronder kan je screenshots vinden die elk endpoint van de API demonstreren.
 
 ### Aanmaken Blogpost
 
-- ![Screenshot 1](URL_NAAR_SCREENSHOT_1)
-- ![Screenshot 2](URL_NAAR_SCREENSHOT_2)
+- ![Authorization](screenshots/create-blogpost-1.png)
+- ![Request Body](screenshots/create-blogpost-2.png)
+- ![Error On Duplicate](screenshots/create-blogpost-3.png)
 
 ### Ophalen Specifieke Blogpost
 
