@@ -31,12 +31,10 @@ Hieronder kan je screenshots vinden die elk endpoint van de API demonstreren.
 
 ### Updaten Blogpost
 
-- ![Screenshot 1](URL_NAAR_SCREENSHOT_1)
-- ![Screenshot 2](URL_NAAR_SCREENSHOT_2)
+- ![Changed Values](screenshots/update-specific-blogpost-by-id-1.png)
+- ![Proof That ID Cannot Be Changed](screenshots/update-specific-blogpost-by-id-2.png)
 
 ### Leegmaken Database
-
-⚠️ **Let op**: Dit is een bijkomend component.
 
 - ![Screenshot 1](URL_NAAR_SCREENSHOT_1)
 - ![Screenshot 2](URL_NAAR_SCREENSHOT_2)
