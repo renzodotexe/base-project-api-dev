@@ -27,6 +27,8 @@ Hieronder vind je screenshots die de werking van elk API-endpoint demonstreren.
   ![Verzoekbody](screenshots/create-blogpost-2.png)
 - **Fout bij duplicaat**
   ![Fout bij duplicaat](screenshots/create-blogpost-3.png)
+- **Verkeerd datatype**
+  ![Verkeerd datatype](screenshots/create-blogpost-4.png)
 
 ### Ophalen Specifieke Blogpost
 
