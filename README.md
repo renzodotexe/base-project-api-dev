@@ -47,8 +47,8 @@ Screenshots van de volledige OpenAPI-docs pagina:
 
 ![Overzicht](screenshots/openapi-docs-1.png)
 ![GET - All Blogposts](screenshots/openapi-docs-2.png)
-![POST - New Blogpost](screenshots/openapi-docs-2.png)
-![GET - Search Blogpost By ID](screenshots/openapi-docs-3.png)
-![PUT - Update Blogpost By ID](screenshots/openapi-docs-4.png)
-![DELETE - Remove Blogpost By ID](screenshots/openapi-docs-5.png)
-![POST - Clear Whole Database](screenshots/openapi-docs-6.png)
+![POST - New Blogpost](screenshots/openapi-docs-3.png)
+![GET - Search Blogpost By ID](screenshots/openapi-docs-4.png)
+![PUT - Update Blogpost By ID](screenshots/openapi-docs-5.png)
+![DELETE - Remove Blogpost By ID](screenshots/openapi-docs-7.png)
+![POST - Clear Whole Database](screenshots/openapi-docs-7.png)
