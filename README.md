@@ -43,6 +43,12 @@ Hieronder kan je screenshots vinden die elk endpoint van de API demonstreren.
 
 ## Volledige OpenAPI Docs
 
-Hier is een screenshot van de volledige OpenAPI-docs pagina:
+Screenshots van de volledige OpenAPI-docs pagina:
 
-![OpenAPI Documentatie](URL_NAAR_OPENAPI_DOCS)
+![Overzicht](screenshots/openapi-docs-1.png)
+![GET - All Blogposts](screenshots/openapi-docs-2.png)
+![POST - New Blogpost](screenshots/openapi-docs-2.png)
+![GET - Search Blogpost By ID](screenshots/openapi-docs-3.png)
+![PUT - Update Blogpost By ID](screenshots/openapi-docs-4.png)
+![DELETE - Remove Blogpost By ID](screenshots/openapi-docs-5.png)
+![POST - Clear Whole Database](screenshots/openapi-docs-6.png)
