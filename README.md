@@ -16,7 +16,7 @@ Hieronder kan je screenshots vinden die elk endpoint van de API demonstreren.
 
 ### Weergeven Alle Blogposts
 
-- ![Screenshot 1](screenshots/get-all-blogposts-1)
+- ![Screenshot 1](screenshots/get-all-blogposts-1.png)
 
 ### Aanmaken Blogpost
 
