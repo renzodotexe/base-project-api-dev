@@ -50,5 +50,5 @@ Screenshots van de volledige OpenAPI-docs pagina:
 ![POST - New Blogpost](screenshots/openapi-docs-3.png)
 ![GET - Search Blogpost By ID](screenshots/openapi-docs-4.png)
 ![PUT - Update Blogpost By ID](screenshots/openapi-docs-5.png)
-![DELETE - Remove Blogpost By ID](screenshots/openapi-docs-7.png)
+![DELETE - Remove Blogpost By ID](screenshots/openapi-docs-6.png)
 ![POST - Clear Whole Database](screenshots/openapi-docs-7.png)
