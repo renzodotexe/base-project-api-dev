@@ -8,7 +8,7 @@ Dit basisproject implementeert een RESTful API voor het beheren van blogposts me
 
 Deze API is gehost op Okteto Cloud. Je kunt de API-documentatie en voorbeelden vinden op de volgende locatie:
 
-[Okteto Cloud Container](https://base-project-api-dev-renzodotexe.cloud.okteto.net/docs)
+[Okteto Cloud Container](https://blogpost-api-renzodotexe.cloud.okteto.net/docs/)
 
 ## Aantoonbare Werking
 
